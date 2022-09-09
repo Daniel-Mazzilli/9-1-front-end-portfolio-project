@@ -8,7 +8,7 @@ I will work with The Met Museum's API. The objective is to explore the museum's 
 
 - As a user, I will have a couple of links I may click to navigate to different pages
 - As a user, I will have search options to navigate the extensive collection of the Met
-- As a user, I may select with Museum Department to search in
+- As a user, I may select which Museum Department to search in
 - As a user, I may enter keywords in my search query
 - As a user, I may select works that are highlighted
 - As a user, my search results will appear in the main section of the page
