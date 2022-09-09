@@ -1,12 +1,32 @@
+* {
+  margin: 10px;
+  padding: 3px
+}
+
 body {
-  border: 4px solid blue;
+  border: 2px solid black;
   display: grid;
-  
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 2fr 4fr 0.5fr;
+  font-family: sans-serif;
 }
 
 header {
   background-color: #e4032b;
   color: #ffffff;
-  font-family: sans-serif;
-  border: 2px solid black;
+  border: 2px solid #ef8b9f;
+  grid-column: 1/3;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 2fr 4fr;
+}
+
+footer{
+  grid-column: 1/3;
+  background-color: #ef8b9f;
+  border: 2px solid #e4032b;
+  text-align: right;
 }
