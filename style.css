@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 html,
 body {
   width: 100%;
@@ -9,7 +11,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: auto 1fr auto;
-  font-family: sans-serif;
+  font-family: Open Sans;
+}
+
+h1 {
+  font-size: 38px;
 }
 
 header {
@@ -27,6 +33,7 @@ aside {
 main {
   display: grid;
   grid-template-rows: 2fr 4fr;
+  font-size: 24px;
 }
 
 header,
