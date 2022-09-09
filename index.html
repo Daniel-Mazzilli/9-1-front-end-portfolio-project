@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./main.js"></script>
+    <script defer src="./main.js"></script>
     <link rel="stylesheet" href="./style.css" />
     <title>Front End Portfolio Project</title>
   </head>
@@ -12,12 +12,18 @@
     <header>
       <h1>Exploring The Met Museum's Collection</h1>
       <section>links to other pages</section>
-      <!-- <h2>Daniel Mazzilli</h2> -->
     </header>
     <aside>
       <form action="">
-        <input type="search" name="keyword" id="keyword">
-        <br>
+        <label for="search">Search The Met's Collection: </label>
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Type here"
+          required
+        />
+        <br />
         <select name="department" id="department">
           <option value="">Select a Department</option>
           <option value="1">American Decorative Arts</option>
@@ -40,8 +46,16 @@
           <option value="19">Photographs</option>
           <option value="21">Modern Art</option>
         </select>
-        <br>
-        <input type="submit" value="search">
+        <br />
+        <input
+          type="checkbox"
+          name="highlight"
+          id="highlight"
+          value="highlight"
+        />
+        <label for="highlight">Museum Highlight</label>
+        <br />
+        <input type="submit" value="search" />
       </form>
     </aside>
     <main>
