@@ -10,8 +10,9 @@
   </head>
   <body>
     <header>
-      <h1>Exploring The Met Museum's Collection</h1>
-      <section>links to other pages</section>
+      <h1>The Met Museum's Collection</h1>
+      <hr>
+      <section>LINKS TO BE ADDED HERE</section>
     </header>
     <aside>
       <form action="">
@@ -24,19 +25,26 @@
           required
         />
         <br />
-        <label for="artist-or-culture">Artist or Culture</label>
         <input
           type="radio"
           name="search-selection"
           id="artist-or-culture"
           value="artistOrCulture"
         />
+        <label for="artist-or-culture">Artist or Culture</label>
         <br />
-        <label for="title">Work Title</label>
         <input type="radio" name="search-selection" id="title" value="title" />
+        <label for="title">Work Title</label>
         <br />
+        <input
+          type="radio"
+          name="search-selection"
+          id="all-fields"
+          value=""
+          checked
+        />
         <label for="all-fields">All Fields</label>
-        <input type="radio" name="search-selection" id="all-fields" value="" checked/>
+
         <select name="department" id="department">
           <option value="">Select a Department</option>
           <option value="1">American Decorative Arts</option>
@@ -70,11 +78,13 @@
         <br />
         <input type="submit" value="search" />
       </form>
+      <hr />
+      <button>Random Item</button>
     </aside>
     <main>
-      <article id="item">Selected Item Here</article>
+      <article id="item">Item Goes Here</article>
       <article id="search-results">Search Results Here</article>
     </main>
-    <footer>Daniel Mazzilli</footer>
+    <footer>Daniel Mazzilli - Sept 2022</footer>
   </body>
 </html>
