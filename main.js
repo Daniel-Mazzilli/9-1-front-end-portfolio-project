@@ -4,6 +4,7 @@ const hiddenAtFirst = document.querySelectorAll(`.hidden-at-first`);
 const header = document.querySelector(`header`);
 const form = document.querySelector(`form`);
 const typeSearch = document.querySelector(`#search`);
+const links = document.querySelectorAll(`.links a`);
 
 // Variables
 let totalItems;
@@ -86,4 +87,12 @@ form.addEventListener(`submit`, (event) => {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
+});
+
+// Hoover links
+links.forEach((el) => {
+  el.addEventListener(`mouseover`, (event) => {
+    //event.preventDefault();
+    el.style.color = `black`
+  });
 });

@@ -95,3 +95,18 @@ aside {
   margin: 8px;
   border-radius: 6px;
 }
+
+.links {
+  justify-content: center;
+}
+
+.links a{
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hoover a {
+  color: #19a8e3;
+  text-decoration: line-through;
+}
