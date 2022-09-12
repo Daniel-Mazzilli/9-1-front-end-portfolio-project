@@ -30,18 +30,18 @@
         <br />
         <input
           type="radio"
-          name="search-selection"
+          name="search-field"
           id="artist-or-culture"
-          value="artistOrCulture"
+          value="artistOrCulture=true&"
         />
         <label for="artist-or-culture">Artist & Culture Fields</label>
         <br />
-        <input type="radio" name="search-selection" id="title" value="title" />
+        <input type="radio" name="search-field" id="title" value="title=true&" />
         <label for="title">Title Field</label>
         <br />
         <input
           type="radio"
-          name="search-selection"
+          name="search-field"
           id="all-fields"
           value=""
           checked
@@ -73,13 +73,13 @@
         <br />
         <input
           type="checkbox"
-          name="highlight"
-          id="highlight"
-          value="highlight"
+          name="isHighlight"
+          id="isHighlight"
+          value="isHighlight=true&"
         />
-        <label for="highlight">Museum Highlight</label>
+        <label for="isHighlight">Museum Highlight</label>
         <br />
-        <input type="checkbox" name="onview" id="onview" value="onview" />
+        <input type="checkbox" name="onview" id="onview" value="isOnView=true&" />
         <label for="onview">On View</label>
         <br />
         <input type="submit" value="search" />

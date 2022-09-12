@@ -3,6 +3,7 @@ const h2 = document.querySelector(`h2`);
 const hiddenAtFirst = document.querySelectorAll(`.hidden-at-first`);
 const header = document.querySelector(`header`);
 const form = document.querySelector(`form`);
+const typeSearch = document.querySelector(`#search`);
 
 // Variables
 let totalItems;
@@ -34,7 +35,7 @@ fetch(`${rootURL}objects`)
 // Example Fetch
 fetch(exampleURL)
   .then((res) => res.json())
-  .then((resJson) => console.log(resJson.objectID))
+  .then((resJson) => console.log(`example ID`, resJson.objectID))
   .catch((err) => console.log(err));
 
 // Functions
@@ -43,3 +44,46 @@ const randomIndexForObj = () => {
 };
 
 // Search fetch
+form.addEventListener(`submit`, (event) => {
+  event.preventDefault();
+  let qSearch = ``;
+  let searchField = ``;
+  let departmentID = ``;
+  let highlight = ``;
+  let onDisplay = ``;
+
+  qSearch = `q=` + typeSearch.value.split(` `).join(`+`);
+  searchField = form.elements[`search-field`].value;
+  departmentID = form.elements.department.value;
+  if (departmentID) {
+    departmentID = `departmentId=${departmentID}&`;
+  }
+  if (form.elements.isHighlight.checked) {
+    highlight = form.elements.isHighlight.value;
+  }
+  if (form.elements.onview.checked) {
+    onDisplay = form.elements.onview.value;
+  }
+  const searchURL =
+    rootURL +
+    `search?` +
+    searchField +
+    departmentID +
+    highlight +
+    onDisplay +
+    qSearch;
+
+  fetch(searchURL)
+    .then((res) => res.json())
+    .then((resJson) => {
+      const searchResults = resJson.objectIDs;
+      const firstItem = searchResults[0];
+      fetch(rootURL + `objects/` + firstItem)
+        .then((res) => res.json())
+        .then((resJson) => {
+          console.log(resJson);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+});
