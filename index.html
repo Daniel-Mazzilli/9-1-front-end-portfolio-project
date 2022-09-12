@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Front End Portfolio Project</title>
   </head>
-  <body>
+  <body class="initial-look">
     <header>
       <h1>The Met Museum's Collection</h1>
-      <hr>
-      <section>LINKS TO BE ADDED HERE</section>
+      <h2>Loading...</h2>
+      <hr class="hidden-at-first" />
+      <section class="hidden-at-first">LINKS TO BE ADDED HERE</section>
     </header>
-    <aside>
+    <aside class="hidden-at-first">
       <form action="">
         <label for="search">Search The Met's Collection: </label>
         <input
@@ -24,6 +25,8 @@
           placeholder="Type here"
           required
         />
+        <br />
+        <span>within:</span>
         <br />
         <input
           type="radio"
@@ -76,15 +79,18 @@
         />
         <label for="highlight">Museum Highlight</label>
         <br />
+        <input type="checkbox" name="onview" id="onview" value="onview" />
+        <label for="onview">On View</label>
+        <br />
         <input type="submit" value="search" />
       </form>
       <hr />
-      <button>Random Item</button>
+      <button>View Random Item</button>
     </aside>
-    <main>
+    <main class="hidden-at-first">
       <article id="item">Item Goes Here</article>
       <article id="search-results">Search Results Here</article>
     </main>
-    <footer>Daniel Mazzilli - Sept 2022</footer>
+    <footer class="hidden-at-first">Daniel Mazzilli - Sept 2022</footer>
   </body>
 </html>
