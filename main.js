@@ -88,11 +88,3 @@ form.addEventListener(`submit`, (event) => {
     })
     .catch((err) => console.log(err));
 });
-
-// Hoover links
-links.forEach((el) => {
-  el.addEventListener(`mouseover`, (event) => {
-    //event.preventDefault();
-    el.style.color = `black`
-  });
-});

@@ -62,13 +62,14 @@ aside {
 
 aside {
   background-color: #19a8e3;
+  background-color: #cfe4ff;
   line-height: 2;
 }
 
 footer {
   grid-column: 1/3;
-  /* background-color: #311622; */
   background-color: #630113;
+  background-color: #333333;
   text-align: right;
   color: #ffffff;
   padding-right: 10px;
@@ -100,13 +101,13 @@ aside {
   justify-content: center;
 }
 
-.links a{
+.links a {
   color: white;
   font-size: 14px;
   text-decoration: none;
 }
 
-.hoover a {
-  color: #19a8e3;
-  text-decoration: line-through;
+.links a:hover {
+  color: #333333;
+  text-transform: uppercase;
 }
