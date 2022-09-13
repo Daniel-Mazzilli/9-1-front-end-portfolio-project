@@ -5,6 +5,7 @@ const header = document.querySelector(`header`);
 const form = document.querySelector(`form`);
 const typeSearch = document.querySelector(`#search`);
 const links = document.querySelectorAll(`.links a`);
+const image = document.querySelector(`#image`);
 
 // Variables
 let totalItems;
@@ -36,7 +37,10 @@ fetch(`${rootURL}objects`)
 // Example Fetch
 fetch(exampleURL)
   .then((res) => res.json())
-  .then((resJson) => console.log(`example ID`, resJson.objectID))
+  .then((resJson) => {
+    console.log(`example ID`, resJson.objectID)
+    image.setAttribute(`src`, resJson.primaryImageSmall)
+})
   .catch((err) => console.log(err));
 
 // Functions

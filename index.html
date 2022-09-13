@@ -11,15 +11,15 @@
   <body class="initial-look">
     <header>
       <h1>The Metropolitan Museum of Art's Collection</h1>
-      <h2>Loading...</h2>
+      <h2>LOADING ...</h2>
       <hr class="hidden-at-first" />
       <section class="hidden-at-first links">
         <a href="./about.html">About</a>
-        <span> | </span>
+        <span class="span-links">|</span>
         <a href="https://metmuseum.github.io/" target="_blank"
           >API Documentation</a
         >
-        <span> | </span>
+        <span class="span-links">|</span>
         <a
           href="https://www.metmuseum.org/visit/plan-your-visit"
           target="_blank"
@@ -27,9 +27,9 @@
         >
       </section>
     </header>
-    <aside class="hidden-at-first">
+    <aside class="hidden-at-first search-aside">
       <form action="">
-        <label for="search">Search The Met's Collection: </label>
+        <label for="search">Search The Met's Collection:</label>
         <input
           type="search"
           name="search"
@@ -64,7 +64,6 @@
           checked
         />
         <label for="all-fields">All Fields</label>
-
         <select name="department" id="department">
           <option value="">Select a Department</option>
           <option value="1">American Decorative Arts</option>
@@ -110,8 +109,26 @@
       <button>View Random Item</button>
     </aside>
     <main class="hidden-at-first">
-      <article id="item">Item Goes Here</article>
-      <article id="search-results">Search Results Here</article>
+      <article id="item">
+        <p><strong>Object ID: </strong></p>
+        <p><strong>Title: </strong></p>
+        <p><strong>artistPrefix</strong> artistDisplayName</p>
+        <img id="image" src="" alt="art work image" />
+        <p><strong>Year Acquired: </strong></p>
+        <p><strong>artistDisplayBio</strong></p>
+        <p><strong>Department: </strong></p>
+        <p><strong>Object type: </strong></p>
+        <p><strong>Culture: </strong></p>
+        <p><strong>Role of Artist: </strong></p>
+        <p><strong>Object Date: </strong></p>
+        <p><strong>Medium: </strong></p>
+        <p><strong>Museum Highlight: </strong></p>
+        <p><strong>Dimensions: </strong></p>
+        <p><strong>geographyType country</strong></p>
+        <p><a href="" target="_blank">Visit Met's webpage objectURL</a></p>
+        <p><strong>Gallery: </strong></p>
+      </article>
+      <article id="search-results"><strong>SEARCH RESULTS</strong></article>
     </main>
     <footer class="hidden-at-first">Daniel Mazzilli - Sept 2022</footer>
   </body>
