@@ -6,12 +6,37 @@ const form = document.querySelector(`form`);
 const typeSearch = document.querySelector(`#search`);
 const links = document.querySelectorAll(`.links a`);
 const image = document.querySelector(`#image`);
+const itemPs = document.querySelectorAll(`#item p`);
+const metObjURL = document.querySelector(`#met-obj-url`);
 
 // Variables
 let totalItems;
 let allItemsIds;
 let randomIndex;
 let randomId;
+
+// Arrays and Variables to Update Main Section
+const keysForItem = [
+  `objectID`,
+  `title`,
+  `objectName`,
+  `artistRole`,
+  `artistDisplayName`,
+  `artistDisplayBio`,
+  `culture`,
+  `department`,
+  `accessionYear`,
+  `objectDate`,
+  `medium`,
+  `dimensions`,
+  `geographyType`,
+  `country`,
+  `tags.term`,
+  `GalleryNumber`,
+  `isHighlight`,
+];
+const keyForImg = `primaryImageSmall`;
+const keyObjURL = `objectURL`;
 
 // URL for Fetch
 const exampleURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/247001`;
@@ -39,7 +64,7 @@ fetch(exampleURL)
   .then((res) => res.json())
   .then((resJson) => {
     console.log(`example ID`, resJson.objectID);
-    image.setAttribute(`src`, resJson.primaryImageSmall);
+    // image.setAttribute(`src`, resJson.primaryImageSmall);
   })
   .catch((err) => console.log(err));
 
@@ -47,6 +72,14 @@ fetch(exampleURL)
 const getRandomId = () => {
   randomIndex = Math.round(Math.random() * totalItems);
   randomId = allItemsIds[randomIndex];
+};
+
+const updateItemData = (path) => {
+  itemPs.forEach((el, index) => {
+    el.innerHTML += `${path[keysForItem[index]]}`;
+  });
+  image.setAttribute(`src`, path[keyForImg]);
+  metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
 
 // Search fetch
@@ -88,7 +121,8 @@ form.addEventListener(`submit`, (event) => {
       fetch(rootURL + `objects/` + firstItem)
         .then((res) => res.json())
         .then((resJson) => {
-          console.log(resJson);
+          console.log(resJson.objectID);
+          updateItemData(resJson);
         })
         .catch((err) => console.log(err));
     })
