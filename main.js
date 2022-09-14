@@ -16,24 +16,37 @@ let randomIndex;
 let randomId;
 
 // Arrays and Variables to Update Main Section
+const pLabelsItem = [
+  `<strong>Item ID: </strong>`,
+  `<strong>Title: </strong>`,
+  `<strong>Item type: </strong>`,
+  `<strong>Artist: </strong>`,
+  `<strong>Medium: </strong>`,
+  `<strong>Artist Role: </strong>`,
+  `<strong>Dimensions: </strong>`,
+  `<strong>Artist Bio: </strong>`,
+  `<strong>Item Date: </strong>`,
+  `<strong>Department: </strong>`,
+  `<strong>Year Acquired: </strong>`,
+  `<strong>Culture: </strong>`,
+  `<strong>Country: </strong>`,
+  `<strong>Gallery #</strong>`,
+];
 const keysForItem = [
   `objectID`,
   `title`,
   `objectName`,
-  `artistRole`,
   `artistDisplayName`,
+  `medium`,
+  `artistRole`,
+  `dimensions`,
   `artistDisplayBio`,
-  `culture`,
+  `objectDate`,
   `department`,
   `accessionYear`,
-  `objectDate`,
-  `medium`,
-  `dimensions`,
-  `geographyType`,
+  `culture`,
   `country`,
-  `tags.term`,
   `GalleryNumber`,
-  `isHighlight`,
 ];
 const keyForImg = `primaryImageSmall`;
 const keyObjURL = `objectURL`;
@@ -76,9 +89,12 @@ const getRandomId = () => {
 
 const updateItemData = (path) => {
   itemPs.forEach((el, index) => {
+    el.innerHTML = pLabelsItem[index];
     el.innerHTML += `${path[keysForItem[index]]}`;
   });
   image.setAttribute(`src`, path[keyForImg]);
+  image.setAttribute(`alt`, `No Image Available`)
+  metObjURL.innerText = `Visit Official Page for Item`;
   metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
 
@@ -127,4 +143,5 @@ form.addEventListener(`submit`, (event) => {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
+  form.reset();
 });

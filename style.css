@@ -104,21 +104,33 @@ main {
 
 #item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 2fr 3fr 3fr;
+  grid-template-rows: repeat(7, auto);
   margin: 4px;
 }
 
-#item p {
-  /* background-color: white; */
-  margin: 0 10px;
+#item p,
+#item a {
+  margin: 8px;
 }
 
 #image {
   border: 1px solid #333333;
-  grid-row: 2/6;
-  height: 200px;
+  background-color: white;
+  grid-row: 2/7;
+  height: 220px;
   width: auto;
+  margin: 2px 8px;
+}
+
+#item a {
+  color:#e4032b;
+  text-decoration: none;
+
+}
+
+#item a:hover {
+  color: #333333;
 }
 
 .span-links {
