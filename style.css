@@ -58,8 +58,7 @@ aside {
 }
 
 aside {
-  background-color: #19a8e3;
-  /* background-color: #cfe4ff; */
+  background-color: #9babbf;
   line-height: 2;
 }
 
@@ -112,7 +111,7 @@ main {
 
 #item p {
   /* background-color: white; */
-  margin-right: 20px;
+  margin: 0 10px;
 }
 
 #image {

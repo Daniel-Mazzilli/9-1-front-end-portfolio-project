@@ -9,7 +9,7 @@ const image = document.querySelector(`#image`);
 
 // Variables
 let totalItems;
-let itemsIds;
+let allItemsIds;
 let randomIndex;
 let randomId;
 
@@ -22,7 +22,7 @@ fetch(`${rootURL}objects`)
   .then((res) => res.json())
   .then((resJson) => {
     totalItems = resJson.total;
-    itemsIds = resJson.objectIDs;
+    allItemsIds = resJson.objectIDs;
 
     // Update look and style
     h2.innerHTML = `Gain access to and explore ${totalItems} artifacts`;
@@ -38,14 +38,15 @@ fetch(`${rootURL}objects`)
 fetch(exampleURL)
   .then((res) => res.json())
   .then((resJson) => {
-    console.log(`example ID`, resJson.objectID)
-    image.setAttribute(`src`, resJson.primaryImageSmall)
-})
+    console.log(`example ID`, resJson.objectID);
+    image.setAttribute(`src`, resJson.primaryImageSmall);
+  })
   .catch((err) => console.log(err));
 
 // Functions
-const randomIndexForObj = () => {
+const getRandomId = () => {
   randomIndex = Math.round(Math.random() * totalItems);
+  randomId = allItemsIds[randomIndex];
 };
 
 // Search fetch
@@ -63,6 +64,7 @@ form.addEventListener(`submit`, (event) => {
   if (departmentID) {
     departmentID = `departmentId=${departmentID}&`;
   }
+  // Maybe Write a function for checkboxes
   if (form.elements.isHighlight.checked) {
     highlight = form.elements.isHighlight.value;
   }
