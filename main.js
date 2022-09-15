@@ -114,7 +114,7 @@ const updateItemData = (path) => {
 
 const addSearchResult = (path) => {
   const searchResultItem = document.createElement(`p`)
-  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - ${path[`title`]} ${path[`artistDisplayName`]} ${path[`objectDate`]} ${path[`department`]}`;
+  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${path[`title`]}</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${path[`department`]}`;
   resultsArticle.prepend(searchResultItem);
 };
 
@@ -164,7 +164,6 @@ form.addEventListener(`submit`, (event) => {
       resultsArticle.innerHTML = ``;
       searchResults.forEach((el, i) => {
         if ((i >= greaterOrEqual) & (i < lesser)) {
-          console.log(el);
           itemFetch(el, addSearchResult);
         }
       });
