@@ -149,7 +149,8 @@ main {
 }
 
 #submit:hover,
-button:hover {
+button:hover,
+#search-results p:hover {
   background-color: #e4032b;
   color: #ffffff;
 }

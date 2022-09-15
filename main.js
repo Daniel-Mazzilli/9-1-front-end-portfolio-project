@@ -17,8 +17,8 @@ let allItemsIds;
 let randomIndex;
 let randomId;
 const exampleID = 247001;
-let greaterOrEqual = 0;
-let lesser = 10;
+let greater = 0;
+let lesser = 31;
 
 // Arrays and Variables For Updating Main Section
 const pLabelsItem = [
@@ -78,11 +78,14 @@ fetch(`${rootURL}objects`)
   .catch((err) => console.log(err));
 
 // Functions
-const itemFetch = (id, functionForItem) => {
+const itemFetch = (id, functionForItem, function2ForItem = null) => {
   fetch(rootURL + `objects/` + id)
     .then((res) => res.json())
     .then((resJson) => {
       functionForItem(resJson);
+      if (function2ForItem) {
+        function2ForItem(resJson);
+      }
     })
     .catch((err) => console.log(err));
 };
@@ -92,6 +95,40 @@ const getRandomId = () => {
   randomId = allItemsIds[randomIndex];
 };
 
+const resetResults = () => {
+  resultsArticle.innerHTML = ``;
+};
+
+const searchResultAppend = (path) => {
+  if (path[`objectID`]) {
+    const searchResultItem = document.createElement(`p`);
+    searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
+      path[`title`]
+    }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
+      path[`department`]
+    }`;
+    resultsArticle.append(searchResultItem);
+    searchResultItem.addEventListener(`click`, () => {
+      updateItemData(path);
+    });
+  }
+};
+
+const searchResultPrepend = (path) => {
+  if (path[`objectID`]) {
+    const searchResultItem = document.createElement(`p`);
+    searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
+      path[`title`]
+    }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
+      path[`department`]
+    }`;
+    resultsArticle.prepend(searchResultItem);
+    searchResultItem.addEventListener(`click`, () => {
+      updateItemData(path);
+    });
+  }
+};
+
 const updateItemData = (path) => {
   itemPs.forEach((el, index) => {
     el.innerHTML = pLabelsItem[index];
@@ -99,21 +136,13 @@ const updateItemData = (path) => {
   });
   if (path[keyForImg]) {
     image.setAttribute(`src`, path[keyForImg]);
+    image.setAttribute(`alt`, `item image`);
   } else {
     image.setAttribute(`src`, `./no-image.jpg`);
+    image.setAttribute(`alt`, `no image icon`);
   }
   metObjURL.innerText = `Visit Item's Official Page`;
   metObjURL.setAttribute(`href`, path[keyObjURL]);
-};
-
-const addSearchResult = (path) => {
-  const searchResultItem = document.createElement(`p`);
-  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
-    path[`title`]
-  }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
-    path[`department`]
-  }`;
-  resultsArticle.prepend(searchResultItem);
 };
 
 // Example Fetch
@@ -153,15 +182,16 @@ form.addEventListener(`submit`, (event) => {
   fetch(searchURL)
     .then((res) => res.json())
     .then((resJson) => {
+      resetResults();
       const searchResults = resJson.objectIDs;
       const firstItem = searchResults[0];
-      itemFetch(firstItem, updateItemData);
+      itemFetch(firstItem, updateItemData, searchResultPrepend);
       //Search Results
       console.log(searchResults);
       resultsArticle.innerHTML = ``;
       searchResults.forEach((el, i) => {
-        if ((i >= greaterOrEqual) & (i < lesser)) {
-          itemFetch(el, addSearchResult);
+        if ((i > greater) & (i < lesser)) {
+          itemFetch(el, searchResultAppend);
         }
       });
     })
@@ -172,5 +202,6 @@ form.addEventListener(`submit`, (event) => {
 // Button Event Listener
 button.addEventListener(`click`, () => {
   getRandomId();
+  resetResults();
   itemFetch(randomId, updateItemData);
 });
