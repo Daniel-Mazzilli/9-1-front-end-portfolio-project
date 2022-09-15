@@ -126,9 +126,8 @@ main {
 }
 
 #item a {
-  color:#e4032b;
+  color: #e4032b;
   text-decoration: none;
-
 }
 
 #item a:hover {
@@ -137,4 +136,10 @@ main {
 
 .span-links {
   margin: 0 28px;
+}
+
+#submit:hover,
+button:hover {
+  background-color: #e4032b;
+  color: #ffffff;
 }

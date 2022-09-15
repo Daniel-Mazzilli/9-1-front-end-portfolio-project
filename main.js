@@ -9,14 +9,18 @@ const image = document.querySelector(`#image`);
 const itemPs = document.querySelectorAll(`#item p`);
 const metObjURL = document.querySelector(`#met-obj-url`);
 const button = document.querySelector(`button`);
+const resultsArticle = document.querySelector(`#search-results`);
 
 // Variables
 let totalItems;
 let allItemsIds;
 let randomIndex;
 let randomId;
+const exampleID = 247001;
+let greaterOrEqual = 0;
+let lesser = 10;
 
-// Arrays and Variables to Update Main Section
+// Arrays and Variables For Updating Main Section
 const pLabelsItem = [
   `<strong>Item ID: </strong>`,
   `<strong>Title: </strong>`,
@@ -73,21 +77,21 @@ fetch(`${rootURL}objects`)
   })
   .catch((err) => console.log(err));
 
-// Example Fetch
-fetch(exampleURL)
-  .then((res) => res.json())
-  .then((resJson) => {
-    console.log(`example ID`, resJson.objectID);
-    // image.setAttribute(`src`, resJson.primaryImageSmall);
-  })
-  .catch((err) => console.log(err));
-
 // Functions
-const mainItemFetch = (id) => {
+// const mainItemFetch = (id) => {
+//   fetch(rootURL + `objects/` + id)
+//     .then((res) => res.json())
+//     .then((resJson) => {
+//       updateItemData(resJson);
+//     })
+//     .catch((err) => console.log(err));
+// };
+
+const itemFetch = (id, functionForItem) => {
   fetch(rootURL + `objects/` + id)
     .then((res) => res.json())
     .then((resJson) => {
-      updateItemData(resJson);
+      functionForItem(resJson);
     })
     .catch((err) => console.log(err));
 };
@@ -108,7 +112,16 @@ const updateItemData = (path) => {
   metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
 
-// Search fetch
+const addSearchResult = (path) => {
+  const searchResultItem = document.createElement(`p`)
+  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - ${path[`title`]} ${path[`artistDisplayName`]} ${path[`objectDate`]} ${path[`department`]}`;
+  resultsArticle.prepend(searchResultItem);
+};
+
+// Example Fetch
+// mainItemFetch(exampleID, updateItemData);
+
+// Search Fetch
 form.addEventListener(`submit`, (event) => {
   event.preventDefault();
   let qSearch = ``;
@@ -144,20 +157,25 @@ form.addEventListener(`submit`, (event) => {
     .then((resJson) => {
       const searchResults = resJson.objectIDs;
       const firstItem = searchResults[0];
-      // fetch(rootURL + `objects/` + firstItem)
-      //   .then((res) => res.json())
-      //   .then((resJson) => {
-      //     updateItemData(resJson);
-      //   })
-      //   .catch((err) => console.log(err));
-      mainItemFetch(firstItem);
+      // mainItemFetch(firstItem);
+      itemFetch(firstItem, updateItemData);
+      //Search Results
+      console.log(searchResults);
+      resultsArticle.innerHTML = ``;
+      searchResults.forEach((el, i) => {
+        if ((i >= greaterOrEqual) & (i < lesser)) {
+          console.log(el);
+          itemFetch(el, addSearchResult);
+        }
+      });
     })
     .catch((err) => console.log(err));
   form.reset();
 });
 
-// button event listener
+// Button Event Listener
 button.addEventListener(`click`, () => {
   getRandomId();
-  mainItemFetch(randomId);
+  // mainItemFetch(randomId);
+  itemFetch(randomId, updateItemData);
 });
