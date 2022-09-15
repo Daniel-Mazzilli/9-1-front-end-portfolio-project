@@ -116,18 +116,23 @@ main {
 
 #item p,
 #item a {
-  margin: 6px;
+  margin: 3px;
+}
+
+#div-img {
+  grid-row: 2/8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #image {
   border: 1px solid #333333;
-  background-color: white;
-  grid-row: 2/7;
   max-height: 220px;
   max-width: 280px;
   height: auto;
   width: auto;
-  margin: 2px 8px;
+  margin: 8px 8px;
 }
 
 #item a {
@@ -150,5 +155,5 @@ button:hover {
 }
 
 div hr {
-  margin-top: 3px;
+  margin-top: -3px;
 }

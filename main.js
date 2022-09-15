@@ -78,15 +78,6 @@ fetch(`${rootURL}objects`)
   .catch((err) => console.log(err));
 
 // Functions
-// const mainItemFetch = (id) => {
-//   fetch(rootURL + `objects/` + id)
-//     .then((res) => res.json())
-//     .then((resJson) => {
-//       updateItemData(resJson);
-//     })
-//     .catch((err) => console.log(err));
-// };
-
 const itemFetch = (id, functionForItem) => {
   fetch(rootURL + `objects/` + id)
     .then((res) => res.json())
@@ -106,15 +97,22 @@ const updateItemData = (path) => {
     el.innerHTML = pLabelsItem[index];
     el.innerHTML += `${path[keysForItem[index]]}`;
   });
-  image.setAttribute(`src`, path[keyForImg]);
-  image.setAttribute(`alt`, `No Image Available`);
-  metObjURL.innerText = `Visit Official Page for Item`;
+  if (path[keyForImg]) {
+    image.setAttribute(`src`, path[keyForImg]);
+  } else {
+    image.setAttribute(`src`, `./no-image.jpg`);
+  }
+  metObjURL.innerText = `Visit Item's Official Page`;
   metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
 
 const addSearchResult = (path) => {
-  const searchResultItem = document.createElement(`p`)
-  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${path[`title`]}</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${path[`department`]}`;
+  const searchResultItem = document.createElement(`p`);
+  searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
+    path[`title`]
+  }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
+    path[`department`]
+  }`;
   resultsArticle.prepend(searchResultItem);
 };
 
@@ -157,7 +155,6 @@ form.addEventListener(`submit`, (event) => {
     .then((resJson) => {
       const searchResults = resJson.objectIDs;
       const firstItem = searchResults[0];
-      // mainItemFetch(firstItem);
       itemFetch(firstItem, updateItemData);
       //Search Results
       console.log(searchResults);
@@ -175,6 +172,5 @@ form.addEventListener(`submit`, (event) => {
 // Button Event Listener
 button.addEventListener(`click`, () => {
   getRandomId();
-  // mainItemFetch(randomId);
   itemFetch(randomId, updateItemData);
 });
