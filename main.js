@@ -8,6 +8,7 @@ const links = document.querySelectorAll(`.links a`);
 const image = document.querySelector(`#image`);
 const itemPs = document.querySelectorAll(`#item p`);
 const metObjURL = document.querySelector(`#met-obj-url`);
+const button = document.querySelector(`button`);
 
 // Variables
 let totalItems;
@@ -82,6 +83,15 @@ fetch(exampleURL)
   .catch((err) => console.log(err));
 
 // Functions
+const mainItemFetch = (id) => {
+  fetch(rootURL + `objects/` + id)
+    .then((res) => res.json())
+    .then((resJson) => {
+      updateItemData(resJson);
+    })
+    .catch((err) => console.log(err));
+};
+
 const getRandomId = () => {
   randomIndex = Math.round(Math.random() * totalItems);
   randomId = allItemsIds[randomIndex];
@@ -93,7 +103,7 @@ const updateItemData = (path) => {
     el.innerHTML += `${path[keysForItem[index]]}`;
   });
   image.setAttribute(`src`, path[keyForImg]);
-  image.setAttribute(`alt`, `No Image Available`)
+  image.setAttribute(`alt`, `No Image Available`);
   metObjURL.innerText = `Visit Official Page for Item`;
   metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
@@ -134,14 +144,20 @@ form.addEventListener(`submit`, (event) => {
     .then((resJson) => {
       const searchResults = resJson.objectIDs;
       const firstItem = searchResults[0];
-      fetch(rootURL + `objects/` + firstItem)
-        .then((res) => res.json())
-        .then((resJson) => {
-          console.log(resJson.objectID);
-          updateItemData(resJson);
-        })
-        .catch((err) => console.log(err));
+      // fetch(rootURL + `objects/` + firstItem)
+      //   .then((res) => res.json())
+      //   .then((resJson) => {
+      //     updateItemData(resJson);
+      //   })
+      //   .catch((err) => console.log(err));
+      mainItemFetch(firstItem);
     })
     .catch((err) => console.log(err));
   form.reset();
+});
+
+// button event listener
+button.addEventListener(`click`, () => {
+  getRandomId();
+  mainItemFetch(randomId);
 });

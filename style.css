@@ -118,7 +118,9 @@ main {
   border: 1px solid #333333;
   background-color: white;
   grid-row: 2/7;
-  height: 220px;
+  max-height: 220px;
+  max-width: 280px;
+  height: auto;
   width: auto;
   margin: 2px 8px;
 }
