@@ -11,6 +11,10 @@ There are currently 480k+ items, and more artifacts are added regularly to the d
 4. Select the option **Go Live** at the bottom right corner of VSCode.
 5. Now you may make your first search using the search form, or simply view a random item by selecting the view random item option.
 
+### Link To Deployed Website
+---
+* [Visit Deployed Website](https://daniel-mazzilli.github.io/9-1-front-end-portfolio-project/)
+
 ### User Stores
 ---
 * As a user, when the page first loads I will see the total number of items in the data. The value is updated when the application starts.
@@ -25,6 +29,6 @@ There are currently 480k+ items, and more artifacts are added regularly to the d
 *The application's look and its features are likely to be updated*
 
 ### Learn about the Met Museum and its API
-
+---
 * [Visit The Metropolitan Museum of Art's website](https://www.metmuseum.org/)
 * [Learn more about the Met's API](https://metmuseum.github.io)
