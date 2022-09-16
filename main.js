@@ -20,7 +20,7 @@ let randomId;
 const exampleID = 247001;
 let searchResults;
 let greater = 0;
-let lesser = 31;
+let lesser = 30;
 
 // Arrays and Variables For Updating Main Section
 const pLabelsItem = [
@@ -155,7 +155,7 @@ const loadSearchResults = () => {
   });
   if (searchResults.length >= lesser) {
     moreButton.classList.remove(`hidden`);
-    greater += 30;
+    greater += 29;
     lesser += 30;
   } else {
     moreButton.classList.add(`hidden`);
@@ -208,7 +208,7 @@ form.addEventListener(`submit`, (event) => {
       console.log(searchResults);
       resultsArticle.innerHTML = ``;
       greater = 0;
-      lesser = 31;
+      lesser = 30;
       loadSearchResults();
     })
     .catch((err) => console.log(err));
