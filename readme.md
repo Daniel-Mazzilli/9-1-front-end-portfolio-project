@@ -23,3 +23,8 @@ There are currently 480k+ items, and more artifacts are added regularly to the d
 * As a user, I may choose to view a random item of the collection by clicking on the button **view random item**.
 
 *The application's look and its features are likely to be updated*
+
+### Learn about the Met Museum and its API
+
+* [Visit The Metropolitan Museum of Art's website](https://metmuseum.github.io/)
+* [Learn more about the Met's API](https://www.metmuseum.org/)
