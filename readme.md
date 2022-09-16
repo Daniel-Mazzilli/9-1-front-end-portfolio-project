@@ -7,8 +7,8 @@ There are currently 480k+ items, and more artifacts are added regularly to the d
 ---
 1. Clone this repository to your local machine.
 2. Navigate to the cloned repository's directory on your command line.
-3. Open up the repository in VSCode, by typing in the command **code .**
-4. Select the option **Go Live** bottom right corner of VSCode.
+3. Open up the repository in VSCode, by typing in the command code .
+4. Select the option **Go Live** at the bottom right corner of VSCode.
 5. Now you may make your first search using the search form, or simply view a random item by selecting the view random item option.
 
 ### User Stores
