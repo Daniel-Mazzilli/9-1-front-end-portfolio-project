@@ -10,6 +10,7 @@ const itemPs = document.querySelectorAll(`#item p`);
 const metObjURL = document.querySelector(`#met-obj-url`);
 const button = document.querySelector(`button`);
 const resultsArticle = document.querySelector(`#search-results`);
+const moreButton = document.querySelector(`.more`);
 
 // Variables
 let totalItems;
@@ -17,6 +18,7 @@ let allItemsIds;
 let randomIndex;
 let randomId;
 const exampleID = 247001;
+let searchResults;
 let greater = 0;
 let lesser = 31;
 
@@ -145,6 +147,21 @@ const updateItemData = (path) => {
   metObjURL.setAttribute(`href`, path[keyObjURL]);
 };
 
+const loadSearchResults = () => {
+  searchResults.forEach((el, i) => {
+    if ((i > greater) & (i < lesser)) {
+      itemFetch(el, searchResultAppend);
+    }
+  });
+  if (searchResults.length >= lesser) {
+    moreButton.classList.remove(`hidden`);
+    greater += 30;
+    lesser += 30;
+  } else {
+    moreButton.classList.add(`hidden`);
+  }
+};
+
 // Example Fetch
 // mainItemFetch(exampleID, updateItemData);
 
@@ -183,18 +200,16 @@ form.addEventListener(`submit`, (event) => {
     .then((res) => res.json())
     .then((resJson) => {
       resetResults();
-      const searchResults = resJson.objectIDs;
+      searchResults = resJson.objectIDs;
       const firstItem = searchResults[0];
       itemFetch(firstItem, updateItemData, searchResultPrepend);
       //Search Results
       // console log, later remove
       console.log(searchResults);
       resultsArticle.innerHTML = ``;
-      searchResults.forEach((el, i) => {
-        if ((i > greater) & (i < lesser)) {
-          itemFetch(el, searchResultAppend);
-        }
-      });
+      greater = 0;
+      lesser = 31;
+      loadSearchResults();
     })
     .catch((err) => console.log(err));
   form.reset();
@@ -205,4 +220,10 @@ button.addEventListener(`click`, () => {
   getRandomId();
   resetResults();
   itemFetch(randomId, updateItemData);
+  moreButton.classList.remove(`hidden`);
+  moreButton.classList.add(`hidden`);
+});
+
+moreButton.addEventListener(`click`, () => {
+  loadSearchResults();
 });
