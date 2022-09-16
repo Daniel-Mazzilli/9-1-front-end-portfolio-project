@@ -151,7 +151,7 @@ main {
 
 #submit:hover,
 button:hover,
-#search-results p:hover {
+#search-results a:hover {
   background-color: #e4032b;
   color: #ffffff;
 }
