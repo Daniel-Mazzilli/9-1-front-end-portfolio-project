@@ -158,3 +158,8 @@ button:hover,
 div hr {
   margin-top: -3px;
 }
+
+#search-results p a {
+  text-decoration: none;
+  color: #333333;
+}

@@ -102,11 +102,11 @@ const resetResults = () => {
 const searchResultAppend = (path) => {
   if (path[`objectID`]) {
     const searchResultItem = document.createElement(`p`);
-    searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
-      path[`title`]
-    }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
-      path[`department`]
-    }`;
+    searchResultItem.innerHTML = `<a href="#top">ID: ${
+      path[`objectID`]
+    } - <strong>${path[`title`]}</strong> ${path[`artistDisplayName`]} ${
+      path[`objectDate`]
+    } ${path[`department`]}</a>`;
     resultsArticle.append(searchResultItem);
     searchResultItem.addEventListener(`click`, () => {
       updateItemData(path);
@@ -117,11 +117,11 @@ const searchResultAppend = (path) => {
 const searchResultPrepend = (path) => {
   if (path[`objectID`]) {
     const searchResultItem = document.createElement(`p`);
-    searchResultItem.innerHTML = `ID: ${path[`objectID`]} - <strong>${
-      path[`title`]
-    }</strong> ${path[`artistDisplayName`]} ${path[`objectDate`]} ${
-      path[`department`]
-    }`;
+    searchResultItem.innerHTML = `<a href="#top">ID: ${
+      path[`objectID`]
+    } - <strong>${path[`title`]}</strong> ${path[`artistDisplayName`]} ${
+      path[`objectDate`]
+    } ${path[`department`]}</a>`;
     resultsArticle.prepend(searchResultItem);
     searchResultItem.addEventListener(`click`, () => {
       updateItemData(path);
@@ -187,6 +187,7 @@ form.addEventListener(`submit`, (event) => {
       const firstItem = searchResults[0];
       itemFetch(firstItem, updateItemData, searchResultPrepend);
       //Search Results
+      // console log, later remove
       console.log(searchResults);
       resultsArticle.innerHTML = ``;
       searchResults.forEach((el, i) => {
