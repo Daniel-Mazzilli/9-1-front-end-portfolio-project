@@ -26,5 +26,5 @@ There are currently 480k+ items, and more artifacts are added regularly to the d
 
 ### Learn about the Met Museum and its API
 
-* [Visit The Metropolitan Museum of Art's website](https://metmuseum.github.io/)
-* [Learn more about the Met's API](https://www.metmuseum.org/)
+* [Visit The Metropolitan Museum of Art's website](https://www.metmuseum.org/)
+* [Learn more about the Met's API](https://metmuseum.github.io)
