@@ -55,7 +55,8 @@ const keysForItem = [
   `country`,
   `GalleryNumber`,
 ];
-const keyForImg = `primaryImageSmall`;
+// const keyForImg = `primaryImageSmall`;
+const keyForImg = `primaryImage`;
 const keyObjURL = `objectURL`;
 
 // URL for Fetch
@@ -226,4 +227,12 @@ button.addEventListener(`click`, () => {
 
 moreButton.addEventListener(`click`, () => {
   loadSearchResults();
+});
+
+// Image Event Listener
+image.addEventListener(`click`, () => {
+  const src = image.getAttribute(`src`);
+  if (src !== "./no-image.jpg") {
+    window.open(src);
+  }
 });
