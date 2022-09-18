@@ -135,6 +135,20 @@ main {
   width: auto;
   margin: 8px 8px;
 }
+#image:hover {
+  border: 1px solid #e4032b;
+  opacity: 0.85;
+}
+
+#div-img {
+  display: grid;
+  text-align: center;
+}
+#div-img span {
+  margin-top: -40px;
+  font-size: 10px;
+  font-style: italic;
+}
 
 #item a {
   color: #e4032b;
