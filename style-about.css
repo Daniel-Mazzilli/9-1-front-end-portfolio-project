@@ -43,23 +43,57 @@ header a:hover {
 main {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto auto;
+  margin: 5px;
+}
+
+aside,
+section {
+  border: 1px solid white;
   box-shadow: 3px 3px lightgrey;
   margin: 5px;
   border-radius: 6px;
-  background-image: linear-gradient(to bottom right, #cfe4ff, white);
 }
-main div {
-    grid-column: 2/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+aside {
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: #9babbf;
+  line-height: 2;
+}
+
+aside a {
+  text-decoration: none;
+  color: black;
+}
+
+aside a:hover {
+  text-transform: uppercase;
+  color: #ffffff;
+}
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  grid-column: 2/4;
+  background-image: linear-gradient(to bottom right, #cfe4ff, white);
 }
 
 img {
-  border: 2px solid #e4032b;
+  border: 1px solid lightgray;
   border-radius: 50%;
   height: 180px;
   width: auto;
+  margin-top: 10px;
+}
+
+article {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  padding: 8px;
 }
 
 footer {
