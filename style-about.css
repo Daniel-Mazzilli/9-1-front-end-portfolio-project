@@ -112,6 +112,10 @@ footer p {
   margin: 0;
 }
 
+.hidden-at-first {
+  display: none;
+}
+
 @media (max-width: 770px) {
   body {
     background-color: rgb(248, 202, 202);
@@ -124,6 +128,15 @@ footer p {
 
   .span-links {
     margin: 0 22px;
+  }
+
+  .hidden-later {
+    display: none;
+  }
+
+  .hidden-at-first {
+    display: block;
+    padding: 4px;
   }
 }
 
