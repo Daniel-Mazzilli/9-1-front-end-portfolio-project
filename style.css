@@ -199,6 +199,12 @@ button:hover,
   }
 }
 
+@media (max-width: 580px) {
+  #item {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 420px) {
   .span-links {
     margin: 0 1px;
