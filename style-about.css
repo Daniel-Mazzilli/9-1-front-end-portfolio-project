@@ -111,3 +111,32 @@ footer p {
   padding: 2px 8px;
   margin: 0;
 }
+
+@media (max-width: 770px) {
+  body {
+    background-color: rgb(248, 202, 202);
+  }
+
+  aside,
+  section {
+    grid-column: 1/4;
+  }
+
+  .span-links {
+    margin: 0 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .span-links {
+    margin: 0 3px;
+  }
+
+  header a {
+    font-size: 12px;
+  }
+
+  aside {
+    font-size: 14px;
+  }
+}
