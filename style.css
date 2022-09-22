@@ -189,6 +189,14 @@ button:hover,
   font-size: 18px;
   text-shadow: 2px 2px lightgrey;
   margin: 0;
+  text-align: center;
+}
+
+.number-results {
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  background-color: #9babbf;
 }
 
 @media (max-width: 770px) {
@@ -220,8 +228,7 @@ button:hover,
   section.links a {
     font-size: 12px;
   }
-x
-  #item {
+  x #item {
     grid-template-columns: 1fr;
   }
 }

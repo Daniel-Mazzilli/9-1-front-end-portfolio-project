@@ -11,6 +11,7 @@ const metObjURL = document.querySelector(`#met-obj-url`);
 const button = document.querySelector(`button`);
 const resultsArticle = document.querySelector(`#search-results`);
 const moreButton = document.querySelector(`.more`);
+const resultCount = document.querySelector(`#total-results`);
 
 // Variables
 let totalItems;
@@ -100,6 +101,7 @@ const getRandomId = () => {
 
 const resetResults = () => {
   resultsArticle.innerHTML = ``;
+  resultCount.innerHTML = ``;
 };
 
 const searchResultAppend = (path) => {
@@ -163,6 +165,17 @@ const loadSearchResults = () => {
   }
 };
 
+const errorMessage = (message) => {
+  const error = document.createElement(`p`);
+  error.innerHTML = message;
+  error.classList.add(`error`);
+  form.prepend(error);
+  const removeMessage = () => {
+    error.remove();
+  };
+  setTimeout(removeMessage, 4000);
+};
+
 // Example Fetch
 // mainItemFetch(exampleID, updateItemData);
 
@@ -171,14 +184,8 @@ form.addEventListener(`submit`, (event) => {
   event.preventDefault();
 
   if (typeSearch.value === ``) {
-    const errMessage = document.createElement(`p`);
-    errMessage.innerHTML = `Enter One or More Keywords`;
-    errMessage.classList.add(`error`);
-    form.prepend(errMessage);
-    const removeMessage = () => {
-      errMessage.remove();
-    };
-    setTimeout(removeMessage, 4000);
+    const incorrectForm = `Enter One or More Keywords`;
+    errorMessage(incorrectForm);
   } else {
     let qSearch = ``;
     let searchField = ``;
@@ -212,16 +219,22 @@ form.addEventListener(`submit`, (event) => {
       .then((res) => res.json())
       .then((resJson) => {
         resetResults();
-        searchResults = resJson.objectIDs;
-        const firstItem = searchResults[0];
-        itemFetch(firstItem, updateItemData, searchResultPrepend);
-        //Search Results
-        // console log, later remove
-        console.log(searchResults);
-        resultsArticle.innerHTML = ``;
-        greater = 0;
-        lesser = 30;
-        loadSearchResults();
+        if (!resJson.total) {
+          const noResults = `No Results. Try a different keyword.`;
+          errorMessage(noResults);
+        } else {
+          searchResults = resJson.objectIDs;
+          const firstItem = searchResults[0];
+          itemFetch(firstItem, updateItemData, searchResultPrepend);
+          resultsArticle.innerHTML = ``;
+          greater = 0;
+          lesser = 30;
+          loadSearchResults();
+          const totalResults = document.createElement(`p`);
+          totalResults.classList.add(`number-results`);
+          totalResults.innerHTML = `<strong>Your search has ${searchResults.length} results</strong>`;
+          resultCount.append(totalResults);
+        }
       })
       .catch((err) => console.log(err));
     form.reset();
