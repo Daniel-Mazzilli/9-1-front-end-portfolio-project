@@ -220,7 +220,7 @@ form.addEventListener(`submit`, (event) => {
       .then((resJson) => {
         resetResults();
         if (!resJson.total) {
-          const noResults = `No Results. Try a different keyword.`;
+          const noResults = `No results. Try another search.`;
           errorMessage(noResults);
         } else {
           searchResults = resJson.objectIDs;
