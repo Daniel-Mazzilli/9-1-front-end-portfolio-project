@@ -169,51 +169,63 @@ const loadSearchResults = () => {
 // Search Fetch
 form.addEventListener(`submit`, (event) => {
   event.preventDefault();
-  let qSearch = ``;
-  let searchField = ``;
-  let departmentID = ``;
-  let highlight = ``;
-  let onDisplay = ``;
 
-  qSearch = `q=` + typeSearch.value.split(` `).join(`+`);
-  searchField = form.elements[`search-field`].value;
-  departmentID = form.elements.department.value;
-  if (departmentID) {
-    departmentID = `departmentId=${departmentID}&`;
-  }
-  // Maybe Write a function for checkboxes
-  if (form.elements.isHighlight.checked) {
-    highlight = form.elements.isHighlight.value;
-  }
-  if (form.elements.onview.checked) {
-    onDisplay = form.elements.onview.value;
-  }
-  const searchURL =
-    rootURL +
-    `search?` +
-    searchField +
-    departmentID +
-    highlight +
-    onDisplay +
-    qSearch;
+  if (typeSearch.value === ``) {
+    const errMessage = document.createElement(`p`);
+    errMessage.innerHTML = `Enter One or More Keywords`;
+    errMessage.classList.add(`error`);
+    form.prepend(errMessage);
+    const removeMessage = () => {
+      errMessage.remove();
+    };
+    setTimeout(removeMessage, 4000);
+  } else {
+    let qSearch = ``;
+    let searchField = ``;
+    let departmentID = ``;
+    let highlight = ``;
+    let onDisplay = ``;
 
-  fetch(searchURL)
-    .then((res) => res.json())
-    .then((resJson) => {
-      resetResults();
-      searchResults = resJson.objectIDs;
-      const firstItem = searchResults[0];
-      itemFetch(firstItem, updateItemData, searchResultPrepend);
-      //Search Results
-      // console log, later remove
-      console.log(searchResults);
-      resultsArticle.innerHTML = ``;
-      greater = 0;
-      lesser = 30;
-      loadSearchResults();
-    })
-    .catch((err) => console.log(err));
-  form.reset();
+    qSearch = `q=` + typeSearch.value.split(` `).join(`+`);
+    searchField = form.elements[`search-field`].value;
+    departmentID = form.elements.department.value;
+    if (departmentID) {
+      departmentID = `departmentId=${departmentID}&`;
+    }
+    // Maybe Write a function for checkboxes
+    if (form.elements.isHighlight.checked) {
+      highlight = form.elements.isHighlight.value;
+    }
+    if (form.elements.onview.checked) {
+      onDisplay = form.elements.onview.value;
+    }
+    const searchURL =
+      rootURL +
+      `search?` +
+      searchField +
+      departmentID +
+      highlight +
+      onDisplay +
+      qSearch;
+
+    fetch(searchURL)
+      .then((res) => res.json())
+      .then((resJson) => {
+        resetResults();
+        searchResults = resJson.objectIDs;
+        const firstItem = searchResults[0];
+        itemFetch(firstItem, updateItemData, searchResultPrepend);
+        //Search Results
+        // console log, later remove
+        console.log(searchResults);
+        resultsArticle.innerHTML = ``;
+        greater = 0;
+        lesser = 30;
+        loadSearchResults();
+      })
+      .catch((err) => console.log(err));
+    form.reset();
+  }
 });
 
 // Button Event Listener

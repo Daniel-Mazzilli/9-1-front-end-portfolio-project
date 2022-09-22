@@ -184,6 +184,13 @@ button:hover,
   padding: 0;
 }
 
+.error {
+  color: #e4032b;
+  font-size: 18px;
+  text-shadow: 2px 2px lightgrey;
+  margin: 0;
+}
+
 @media (max-width: 770px) {
   body {
     background-color: rgb(248, 202, 202);
@@ -213,7 +220,7 @@ button:hover,
   section.links a {
     font-size: 12px;
   }
-
+x
   #item {
     grid-template-columns: 1fr;
   }
